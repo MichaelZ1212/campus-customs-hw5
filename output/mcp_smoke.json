@@ -1,0 +1,167 @@
+[
+  {
+    "prompt": "For ticket 101, check whether the Classic Bulldog Tee (CC-TEE-WHITE) in size S is in stock for 1 unit, and which vendors could restock it.",
+    "tool_name": "check_stock_and_vendor_status",
+    "tool_output": {
+      "business_date": "2026-08-31",
+      "product": {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "location": "Aisle B"
+      },
+      "on_hand": 0,
+      "qty_needed": 1,
+      "in_stock": false,
+      "shortfall": 1,
+      "unit_cost": 8.0,
+      "list_price": 28.0,
+      "restock_cost_for_shortfall": 8.0,
+      "invoices_mentioning_this_sku": [
+        {
+          "id": 501,
+          "vendor_id": 1,
+          "vendor_name": "Bulldog Print Co",
+          "amount": 840.0,
+          "due_date": "2026-08-28",
+          "status": "open",
+          "description": "Rush reprint CC-TEE-WHITE S"
+        }
+      ],
+      "vendors": [
+        {
+          "id": 1,
+          "name": "Bulldog Print Co",
+          "specialty": "apparel reprint",
+          "lead_days": 5,
+          "unpaid_invoices": [
+            {
+              "id": 501,
+              "amount": 840.0,
+              "due_date": "2026-08-28",
+              "status": "open",
+              "description": "Rush reprint CC-TEE-WHITE S",
+              "days_overdue": 3
+            }
+          ],
+          "can_accept_new_orders": false,
+          "earliest_delivery_if_ordered_today": "2026-09-05"
+        },
+        {
+          "id": 2,
+          "name": "Elm City Gifts",
+          "specialty": "mugs and small goods",
+          "lead_days": 3,
+          "unpaid_invoices": [],
+          "can_accept_new_orders": true,
+          "earliest_delivery_if_ordered_today": "2026-09-03"
+        },
+        {
+          "id": 3,
+          "name": "QuickShip CT",
+          "specialty": "local courier",
+          "lead_days": 1,
+          "unpaid_invoices": [],
+          "can_accept_new_orders": true,
+          "earliest_delivery_if_ordered_today": "2026-09-01"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "For ticket 102, look up the rent status for lease 1: how much is due, when, whether it has been paid, and whether checking can cover it.",
+    "tool_name": "get_lease_payment_status",
+    "tool_output": {
+      "business_date": "2026-08-31",
+      "lease": {
+        "id": 1,
+        "space_name": "Chapel Street shop",
+        "landlord": "Elm City Properties",
+        "monthly_rent": 2400.0,
+        "next_due": "2026-09-02",
+        "notes": null
+      },
+      "days_until_due": 2,
+      "is_overdue": false,
+      "rent_payments_recorded": [],
+      "cash_accounts": [
+        {
+          "name": "checking",
+          "balance": 3400.0,
+          "date": "2026-08-31",
+          "can_cover_rent": true,
+          "balance_after_rent": 1000.0
+        }
+      ],
+      "other_unpaid_invoices": [
+        {
+          "id": 501,
+          "vendor_id": 1,
+          "amount": 840.0,
+          "due_date": "2026-08-28"
+        }
+      ],
+      "other_unpaid_invoices_total": 840.0,
+      "tickets_for_this_lease": [
+        {
+          "id": 102,
+          "type": "rent_notice",
+          "subject": "Rent due",
+          "status": "open"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "For ticket 103, evaluate the Yale AI Club's request for 20 Basic Hoodies (CC-HOOD-NAVY) in size M at a 15% bulk discount.",
+    "tool_name": "evaluate_bulk_discount",
+    "tool_output": {
+      "business_date": "2026-08-31",
+      "product": {
+        "sku": "CC-HOOD-NAVY",
+        "name": "Basic Hoodie Big Yale",
+        "size": "M"
+      },
+      "requested_qty": 20,
+      "on_hand": 8,
+      "shortfall": 12,
+      "other_sizes": [
+        {
+          "size": "S",
+          "qty": 4
+        },
+        {
+          "size": "L",
+          "qty": 14
+        },
+        {
+          "size": "XL",
+          "qty": 6
+        }
+      ],
+      "restock_cost_for_shortfall": 264.0,
+      "pricing": {
+        "list_price": 58.0,
+        "unit_cost": 22.0,
+        "margin_at_list_pct": 62.1,
+        "break_even_discount_pct": 62.1
+      },
+      "at_requested_discount": {
+        "discount_pct": 15.0,
+        "unit_price": 49.3,
+        "unit_margin": 27.3,
+        "margin_pct": 55.4,
+        "sells_below_cost": false,
+        "order_revenue": 986.0,
+        "order_margin": 546.0,
+        "discount_given": 174.0
+      },
+      "cash_accounts": [
+        {
+          "name": "checking",
+          "balance": 3400.0
+        }
+      ]
+    }
+  }
+]

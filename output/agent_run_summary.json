@@ -1,0 +1,188 @@
+{
+  "run_id": "e0f1f406ab2d",
+  "triage": {
+    "business_date": "2026-08-31",
+    "order": [
+      {
+        "ticket_id": 102,
+        "priority": "high",
+        "reason": "Rent of $2,400 is due in two days (2026-09-02), making it the most time-critical lease obligation.",
+        "lead_agents": [
+          "facilities",
+          "accounting"
+        ]
+      },
+      {
+        "ticket_id": 101,
+        "priority": "medium",
+        "reason": "Customer order is tied to invoice #501, a $840 vendor invoice already 3 days overdue; vendor payment may be needed before restocking.",
+        "lead_agents": [
+          "inventory",
+          "accounting",
+          "customer_service"
+        ]
+      },
+      {
+        "ticket_id": 103,
+        "priority": "low",
+        "reason": "Requested bulk discount is discretionary, below rent and the overdue invoice in payment priority.",
+        "lead_agents": [
+          "accounting",
+          "inventory",
+          "customer_service"
+        ]
+      }
+    ],
+    "cash_note": "Checking has $3,400 available; the $2,400 rent and $840 overdue invoice total $3,240, leaving $160 after those obligations. No pending requests currently commit cash."
+  },
+  "decisions": [
+    {
+      "ticket_id": 102,
+      "final_status": "awaiting_approval",
+      "decision": "Lease 1 confirms $2,400 rent is due September 2, 2026. Payment request #1 is queued and requires human approval; landlord draft #1 is saved for review and does not claim payment has been made.",
+      "approval_request_ids": [
+        1
+      ],
+      "draft_ids": [
+        1
+      ],
+      "agents_consulted": [
+        "facilities"
+      ],
+      "next_steps_for_human": [
+        "Review and approve payment request #1 before the September 2 due date.",
+        "Review landlord message draft #1; it has not been sent."
+      ],
+      "usage": {
+        "requests": 12,
+        "tool_calls": 9,
+        "input_tokens": 29940,
+        "output_tokens": 1110
+      },
+      "delegations": 2
+    },
+    {
+      "ticket_id": 101,
+      "final_status": "awaiting_approval",
+      "decision": "Size S is out of stock, so no tee can ship now. Payment request #2 for overdue invoice 501 ($840) and PO approval request #3 for one tee ($8) are pending human approval; restocking depends on the invoice being paid and the PO being approved. If prerequisites are completed today, expected arrival is September 5, 2026, but that date is conditional.",
+      "approval_request_ids": [
+        2,
+        3
+      ],
+      "draft_ids": [
+        2
+      ],
+      "agents_consulted": [
+        "inventory",
+        "customer_service"
+      ],
+      "next_steps_for_human": [
+        "Review and approve payment request #2 for invoice 501 ($840), subject to rent request #1 priority and available cash.",
+        "After invoice 501 is actually paid, review/execute PO approval request #3 ($8) for one CC-TEE-WHITE size S.",
+        "Review and send customer reply draft #2; do not represent September 5 as guaranteed."
+      ],
+      "usage": {
+        "requests": 14,
+        "tool_calls": 10,
+        "input_tokens": 38079,
+        "output_tokens": 1929
+      },
+      "delegations": 3
+    },
+    {
+      "ticket_id": 103,
+      "final_status": "awaiting_approval",
+      "decision": "Discount approval request #4 is pending for 15% off the 8 CC-HOOD-NAVY size M hoodies currently in stock; the discount is not yet approved. The remaining 12 cannot be restocked now because vendor 1 is blocked by overdue invoice 501 and the $264 restock exceeds the $160 left after priority obligations; customer reply draft #3 explains the partial availability and makes no delivery promise.",
+      "approval_request_ids": [
+        4
+      ],
+      "draft_ids": [
+        3
+      ],
+      "agents_consulted": [
+        "accounting",
+        "inventory",
+        "customer_service"
+      ],
+      "next_steps_for_human": [
+        "Review and approve or reject discount request #4.",
+        "Review draft #3 before sending.",
+        "After invoice 501 is resolved and funds permit, reassess whether to place a 12-unit restock order."
+      ],
+      "usage": {
+        "requests": 15,
+        "tool_calls": 12,
+        "input_tokens": 40714,
+        "output_tokens": 1974
+      },
+      "delegations": 4
+    }
+  ],
+  "errors": [],
+  "pending_approvals": [
+    {
+      "id": 1,
+      "ticket_id": 102,
+      "kind": "rent",
+      "ref_id": 1,
+      "amount": 2400.0,
+      "account": "checking",
+      "reason": "Rent due 2026-09-02; lease and rent notice verified by Facilities.",
+      "requested_by": "accounting",
+      "status": "pending",
+      "decided_by": null,
+      "decision_note": null,
+      "payment_id": null,
+      "created_at": "2026-10-15T00:22:08+00:00",
+      "decided_at": null
+    },
+    {
+      "id": 2,
+      "ticket_id": 101,
+      "kind": "invoice",
+      "ref_id": 501,
+      "amount": 840.0,
+      "account": "checking",
+      "reason": "Request payment for overdue invoice 501, blocking customer restock for ticket 101.",
+      "requested_by": "accounting",
+      "status": "pending",
+      "decided_by": null,
+      "decision_note": null,
+      "payment_id": null,
+      "created_at": "2026-10-15T00:22:51+00:00",
+      "decided_at": null
+    },
+    {
+      "id": 3,
+      "ticket_id": 101,
+      "kind": "purchase_order",
+      "ref_id": 1,
+      "amount": 8.0,
+      "account": "checking",
+      "reason": "Restock one size S tee for customer order ticket 101; blocking invoice 501 payment request is queued.",
+      "requested_by": "accounting",
+      "status": "pending",
+      "decided_by": null,
+      "decision_note": null,
+      "payment_id": null,
+      "created_at": "2026-10-15T00:22:59+00:00",
+      "decided_at": null
+    },
+    {
+      "id": 4,
+      "ticket_id": 103,
+      "kind": "discount",
+      "ref_id": 103,
+      "amount": 69.6,
+      "account": "checking",
+      "reason": "15.0% off 8 x CC-HOOD-NAVY: Bulk order request is 20 units; only 8 size M units are currently on hand. 15% discount gives $49.30 unit price and 55.4% unit margin, meeting policy; approval applies only to units currently supplyable.",
+      "requested_by": "accounting",
+      "status": "pending",
+      "decided_by": null,
+      "decision_note": null,
+      "payment_id": null,
+      "created_at": "2026-10-15T00:23:48+00:00",
+      "decided_at": null
+    }
+  ]
+}

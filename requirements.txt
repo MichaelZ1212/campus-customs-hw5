@@ -1,0 +1,14 @@
+# Python 3.11+ (developed and tested on Python 3.14)
+
+# MCP server: mcp 1.x provides FastMCP (mcp.server.fastmcp); 2.x renamed it to MCPServer.
+mcp>=1.10,<2
+
+# Agents: PydanticAI (OpenAI-compatible client pointed at Portkey) + MCP client support.
+pydantic-ai-slim[openai,mcp]>=2.50
+fastmcp>=3.0
+openai>=1.50
+
+# Backend API
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-dotenv>=1.0
